@@ -6,6 +6,10 @@ import {
   IconMoodHappy,
   IconTypography,
   IconUserPlus,
+  IconBrandProducthunt,
+  IconFileInvoice,
+  IconUserUp,
+  IconUsersGroup,
 } from "@tabler/icons-react";
 
 import { uniqueId } from "lodash";
@@ -21,6 +25,30 @@ const Menuitems = [
     title: "Dashboard",
     icon: IconLayoutDashboard,
     href: "/",
+  },
+  {
+    id: uniqueId(),
+    title: "Product",
+    icon: IconBrandProducthunt,
+    href: "/Products",  // Đảm bảo đường dẫn này khớp với cấu trúc trang của bạn
+  },
+  {
+    id: uniqueId(),
+    title: "Invoice",
+    icon: IconFileInvoice,
+    href: "",
+  },
+  {
+    id: uniqueId(),
+    title: "Employee",
+    icon: IconUserUp,
+    href: "",
+  },
+  {
+    id: uniqueId(),
+    title: "Customer",
+    icon: IconUsersGroup,
+    href: "",
   },
   {
     navlabel: true,
