@@ -10,10 +10,10 @@ import Blog from '@/app/(DashboardLayout)/components/dashboard/Blog';
 import MonthlyEarnings from '@/app/(DashboardLayout)/components/dashboard/MonthlyEarnings';
 import TableComponent from'../(DashboardLayout)/components/shared/TableComponet';
 
-const Dashboard = () => {
+function Product() {
   return (
-    <TableComponent/>
-  )
+    <TableComponent />
+  );
 }
 
-export default Dashboard;
+export default Product;
