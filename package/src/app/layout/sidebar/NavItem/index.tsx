@@ -28,9 +28,10 @@ interface ItemType {
   hideMenu?: any;
   level?: number | any;
   pathDirect: string;
+  isCollapsed: boolean; // Thêm thuộc tính isCollapsed
 }
 
-const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
+const NavItem = ({ item, level, pathDirect, onClick, isCollapsed }: ItemType) => {
   const Icon = item.icon;
   const theme = useTheme();
   const itemIcon = <Icon stroke={1.5} size="1.3rem" />;
@@ -80,9 +81,11 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
           >
             {itemIcon}
           </ListItemIcon>
-          <ListItemText>
-            <>{item.title}</>
-          </ListItemText>
+          {!isCollapsed && (
+            <ListItemText>
+              <>{item.title}</>
+            </ListItemText>
+          )}
         </ListItemButton>
       </ListItemStyled>
     </List>

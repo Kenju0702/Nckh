@@ -53,6 +53,7 @@ const Menuitems = [
   {
     navlabel: true,
     subheader: "Utilities",
+    isCollapsed: true,
   },
   {
     id: uniqueId(),

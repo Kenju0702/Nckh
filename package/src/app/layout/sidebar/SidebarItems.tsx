@@ -5,7 +5,12 @@ import { Box, List } from "@mui/material";
 import NavItem from "./NavItem";
 import NavGroup from "./NavGroup/NavGroup";
 
-const SidebarItems = ({ toggleMobileSidebar }: any) => {
+interface SidebarItemsProps {
+  isCollapsed: boolean;
+  toggleMobileSidebar?: (event: React.MouseEvent<HTMLElement>) => void; // Có thể là undefined
+}
+
+const SidebarItems: React.FC<SidebarItemsProps> = ({ isCollapsed, toggleMobileSidebar }) => {
   const pathname = usePathname();
   const pathDirect = pathname;
 
@@ -13,19 +18,17 @@ const SidebarItems = ({ toggleMobileSidebar }: any) => {
     <Box sx={{ px: 3 }}>
       <List sx={{ pt: 0 }} className="sidebarNav" component="div">
         {Menuitems.map((item) => {
-          // {/********SubHeader**********/}
-          if (item.subheader) {
-            return <NavGroup item={item} key={item.subheader} />;
-
-            // {/********If Sub Menu**********/}
-            /* eslint no-else-return: "off" */
+          if (item.navlabel) {
+            // Kiểm tra isCollapsed để ẩn tiêu đề nhóm
+            return isCollapsed ? null : <NavGroup item={item} key={item.subheader} />;
           } else {
             return (
               <NavItem
                 item={item}
                 key={item.id}
                 pathDirect={pathDirect}
-                onClick={toggleMobileSidebar}
+                onClick={toggleMobileSidebar ?? (() => {})} // Cung cấp giá trị mặc định
+                isCollapsed={isCollapsed}
               />
             );
           }
@@ -34,4 +37,6 @@ const SidebarItems = ({ toggleMobileSidebar }: any) => {
     </Box>
   );
 };
+
 export default SidebarItems;
+

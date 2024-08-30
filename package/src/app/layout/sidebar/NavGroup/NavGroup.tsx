@@ -5,6 +5,7 @@ import { ListSubheader, styled, Theme } from '@mui/material';
 type NavGroup = {
   navlabel?: boolean;
   subheader?: string;
+  isCollapsed?:boolean;
 };
 
 interface ItemType {
@@ -23,6 +24,9 @@ const NavGroup = ({ item }: ItemType) => {
       padding: '3px 12px',
     }),
   );
+  if (item.isCollapsed) {
+    return null;
+  }
   return (
     <ListSubheaderStyle>{item.subheader}</ListSubheaderStyle>
   );

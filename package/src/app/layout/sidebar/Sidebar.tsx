@@ -1,7 +1,10 @@
-import { useMediaQuery, Box, Drawer } from "@mui/material";
+import { useState } from "react";
+import { useMediaQuery, Box, Drawer, IconButton } from "@mui/material";
 import SidebarItems from "./SidebarItems";
 import { Upgrade } from "./Updrade";
 import { Sidebar, Logo } from 'react-mui-sidebar';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 interface ItemType {
   isMobileSidebarOpen: boolean;
@@ -14,22 +17,25 @@ const MSidebar = ({
   onSidebarClose,
   isSidebarOpen,
 }: ItemType) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up("lg"));
 
-  const sidebarWidth = "270px";
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  const sidebarWidth = isCollapsed ? "80px" : "270px";
 
   // Custom CSS for short scrollbar
   const scrollbarStyles = {
     '&::-webkit-scrollbar': {
       width: '7px',
-
     },
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: '#eff2f7',
-      borderRadius: '15px',
+      borderRadius: '12px',
     },
   };
-
 
   if (lgUp) {
     return (
@@ -39,9 +45,6 @@ const MSidebar = ({
           flexShrink: 0,
         }}
       >
-        {/* ------------------------------------------- */}
-        {/* Sidebar for desktop */}
-        {/* ------------------------------------------- */}
         <Drawer
           anchor="left"
           open={isSidebarOpen}
@@ -53,34 +56,31 @@ const MSidebar = ({
             },
           }}
         >
-          {/* ------------------------------------------- */}
-          {/* Sidebar Box */}
-          {/* ------------------------------------------- */}
           <Box
             sx={{
               height: "100%",
             }}
           >
             <Sidebar
-              width={'270px'}
+              width={sidebarWidth}
               collapsewidth="80px"
               open={isSidebarOpen}
               themeColor="#5d87ff"
               themeSecondaryColor="#49beff"
               showProfile={false}
             >
-              {/* ------------------------------------------- */}
-              {/* Logo */}
-              {/* ------------------------------------------- */}
+              <IconButton
+                onClick={toggleCollapse}
+                sx={{ margin: 1 }}
+              >
+                {isCollapsed ? <ChevronLeftIcon /> : <MenuIcon />}
+              </IconButton>
               <Logo img="/images/logos/dark-logo.svg" />
               <Box>
-                {/* ------------------------------------------- */}
-                {/* Sidebar Items */}
-                {/* ------------------------------------------- */}
-                <SidebarItems />
-                <Upgrade />
+              <SidebarItems isCollapsed={isCollapsed} toggleMobileSidebar={undefined} />
+              <Upgrade />
               </Box>
-            </Sidebar >
+            </Sidebar>
           </Box>
         </Drawer>
       </Box>
@@ -100,42 +100,30 @@ const MSidebar = ({
         },
       }}
     >
-      {/* ------------------------------------------- */}
-      {/* Sidebar Box */}
-      {/* ------------------------------------------- */}
-      <Box px={2}>
+      <Box px={3}>
         <Sidebar
-          width={'270px'}
+          width={sidebarWidth}
           collapsewidth="80px"
-          isCollapse={false}
+          isCollapse={isCollapsed}
           mode="light"
           direction="ltr"
           themeColor="#5d87ff"
           themeSecondaryColor="#49beff"
           showProfile={false}
         >
-          {/* ------------------------------------------- */}
-          {/* Logo */}
-          {/* ------------------------------------------- */}
+          <IconButton
+            onClick={toggleCollapse}
+            sx={{ margin: 1 }}
+          >
+            {isCollapsed ? <ChevronLeftIcon /> : <MenuIcon />}
+          </IconButton>
           <Logo img="/images/logos/dark-logo.svg" />
-          {/* ------------------------------------------- */}
-          {/* Sidebar Items */}
-          {/* ------------------------------------------- */}
-          <SidebarItems />
+          <SidebarItems isCollapsed={isCollapsed} toggleMobileSidebar={onSidebarClose} />
           <Upgrade />
         </Sidebar>
       </Box>
-      {/* ------------------------------------------- */}
-      {/* Sidebar For Mobile */}
-      {/* ------------------------------------------- */}
-
     </Drawer>
   );
 };
 
 export default MSidebar;
-
-
-
-
-
