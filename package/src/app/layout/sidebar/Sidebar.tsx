@@ -24,7 +24,7 @@ const MSidebar = ({
     setIsCollapsed(!isCollapsed);
   };
 
-  const sidebarWidth = isCollapsed ? "80px" : "270px";
+  const sidebarWidth = isCollapsed ? "70px" : "270px";
 
   // Custom CSS for short scrollbar
   const scrollbarStyles = {

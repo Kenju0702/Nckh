@@ -36,7 +36,35 @@ const NavItem = ({ item, level, pathDirect, onClick, isCollapsed }: ItemType) =>
   const theme = useTheme();
   const itemIcon = <Icon stroke={1.5} size="1.3rem" />;
 
-  const ListItemStyled = styled(ListItem)(() => ({
+  // const ListItemStyled = styled(ListItem)(() => ({
+  //   padding: 0,
+  //   ".MuiButtonBase-root": {
+  //     whiteSpace: "nowrap",
+  //     marginBottom: "2px",
+  //     padding: "8px 10px",
+  //     borderRadius: "8px",
+  //     backgroundColor: level > 1 ? "transparent !important" : "inherit",
+  //     color: theme.palette.text.secondary,
+  //     paddingLeft: "10px",
+  //     "&:hover": {
+  //       backgroundColor: theme.palette.primary.light,
+  //       color: theme.palette.primary.main,
+  //     },
+   
+  //     "&.Mui-selected": {
+  //       color: "white",
+  //       backgroundColor: theme.palette.primary.main,
+  //       borderRadius: "8px",
+  //       padding: " 5px ",
+  //       "&:hover": {
+  //         backgroundColor: theme.palette.primary.main,
+  //         color: "white",
+  //       },
+  //     },
+  //   },
+  // }));
+
+  const ListItemStyled = styled(ListItem)(({ theme }) => ({
     padding: 0,
     ".MuiButtonBase-root": {
       whiteSpace: "nowrap",
@@ -45,7 +73,8 @@ const NavItem = ({ item, level, pathDirect, onClick, isCollapsed }: ItemType) =>
       borderRadius: "8px",
       backgroundColor: level > 1 ? "transparent !important" : "inherit",
       color: theme.palette.text.secondary,
-      paddingLeft: "10px",
+      // paddingLeft: isCollapsed ? "20px" : "20px", // Thay đổi paddingLeft dựa vào isCollapsed
+      paddingRight:isCollapsed?"30px":null,
       "&:hover": {
         backgroundColor: theme.palette.primary.light,
         color: theme.palette.primary.main,
@@ -60,6 +89,7 @@ const NavItem = ({ item, level, pathDirect, onClick, isCollapsed }: ItemType) =>
       },
     },
   }));
+  
 
   return (
     <List component="div" disablePadding key={item.id}>
@@ -73,10 +103,15 @@ const NavItem = ({ item, level, pathDirect, onClick, isCollapsed }: ItemType) =>
           onClick={onClick}
         >
           <ListItemIcon
-            sx={{
+             sx={{
               minWidth: "36px",
               p: "3px 0",
               color: "inherit",
+              display: "flex",
+              alignItems: "center",
+              // Đảm bảo không có margin-left hoặc padding-left không mong muốn
+              marginLeft: "0",
+              paddingLeft: "0",
             }}
           >
             {itemIcon}
