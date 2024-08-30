@@ -5,6 +5,7 @@ import { Upgrade } from "./Updrade";
 import { Sidebar, Logo } from 'react-mui-sidebar';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import { useSidebar } from "@/app/contentApi/SidebarContext";
 
 interface ItemType {
   isMobileSidebarOpen: boolean;
@@ -17,7 +18,7 @@ const MSidebar = ({
   onSidebarClose,
   isSidebarOpen,
 }: ItemType) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { isCollapsed, setIsCollapsed } = useSidebar();
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up("lg"));
 
   const toggleCollapse = () => {
@@ -75,10 +76,12 @@ const MSidebar = ({
               >
                 {isCollapsed ? <ChevronLeftIcon /> : <MenuIcon />}
               </IconButton>
-              <Logo img="/images/logos/dark-logo.svg" />
+              <Box sx={{ margin: isCollapsed?'6px':null }}> {/* Điều chỉnh giá trị margin theo nhu cầu của bạn */}
+                <Logo img="/images/logos/dark-logo.svg" />
+              </Box>
               <Box>
-              <SidebarItems isCollapsed={isCollapsed} toggleMobileSidebar={undefined} />
-              <Upgrade />
+                <SidebarItems isCollapsed={isCollapsed} toggleMobileSidebar={undefined} />
+                <Upgrade />
               </Box>
             </Sidebar>
           </Box>
