@@ -1,19 +1,19 @@
 'use client'
 import { Grid, Box } from '@mui/material';
-import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
+import PageContainer from '@/app/components/container/PageContainer';
 // components
-import SalesOverview from '@/app/(DashboardLayout)/components/dashboard/SalesOverview';
-import YearlyBreakup from '@/app/(DashboardLayout)/components/dashboard/YearlyBreakup';
-import RecentTransactions from '@/app/(DashboardLayout)/components/dashboard/RecentTransactions';
-import ProductPerformance from '@/app/(DashboardLayout)/components/dashboard/ProductPerformance';
-import Blog from '@/app/(DashboardLayout)/components/dashboard/Blog';
-import MonthlyEarnings from '@/app/(DashboardLayout)/components/dashboard/MonthlyEarnings';
-import TableComponent from'../(DashboardLayout)/components/shared/TableComponet';
+import SalesOverview from '@/app/components/dashboard/SalesOverview';
+import YearlyBreakup from '@/app/components/dashboard/YearlyBreakup';
+import RecentTransactions from '@/app/components/dashboard/RecentTransactions';
+import ProductPerformance from '@/app/components/dashboard/ProductPerformance';
+import Blog from '@/app/components/dashboard/Blog';
+import MonthlyEarnings from '@/app/components/dashboard/MonthlyEarnings';
+import TableComponent from'../components/shared/TableComponet';
 
-const Dashboard = () => {
+function Product() {
   return (
-    <TableComponent/>
-  )
+    <TableComponent />
+  );
 }
 
-export default Dashboard;
+export default Product;
