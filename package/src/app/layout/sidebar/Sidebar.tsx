@@ -76,12 +76,12 @@ const MSidebar = ({
               >
                 {isCollapsed ? <ChevronLeftIcon /> : <MenuIcon />}
               </IconButton>
-              <Box sx={{ margin: isCollapsed?'6px':null }}> {/* Điều chỉnh giá trị margin theo nhu cầu của bạn */}
+              <Box sx={{ margin: isCollapsed?'6px':null }}> 
                 <Logo img="/images/logos/dark-logo.svg" />
               </Box>
               <Box>
                 <SidebarItems isCollapsed={isCollapsed} toggleMobileSidebar={undefined} />
-                <Upgrade />
+                {!isCollapsed ? <Upgrade /> : null}
               </Box>
             </Sidebar>
           </Box>
@@ -120,7 +120,7 @@ const MSidebar = ({
           >
             {isCollapsed ? <ChevronLeftIcon /> : <MenuIcon />}
           </IconButton>
-          <Logo img="/images/logos/dark-logo.svg" />
+          
           <SidebarItems isCollapsed={isCollapsed} toggleMobileSidebar={onSidebarClose} />
           <Upgrade />
         </Sidebar>

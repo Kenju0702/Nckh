@@ -20,6 +20,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 import { visuallyHidden } from '@mui/utils';
 
 interface Data {
@@ -236,18 +238,34 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
         </Typography>
       )}
       {numSelected > 0 ? (
+        <>
         <Tooltip title="Delete">
           <IconButton>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
+        <Tooltip title="Edit">
+            <IconButton>
+              <EditIcon />
+            </IconButton>
+          </Tooltip>
+        </>
       ) : (
+        <>
+         <Tooltip title="Add">
+            <IconButton>
+              <AddIcon />
+            </IconButton>
+          </Tooltip>
         <Tooltip title="Filter list">
           <IconButton>
             <FilterListIcon />
           </IconButton>
         </Tooltip>
+       
+        </>
       )}
+      
     </Toolbar>
   );
 }
