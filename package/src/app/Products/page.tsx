@@ -7,7 +7,7 @@ import { getProvider } from '../services/providerService';
 import { LinearProgress, Box } from '@mui/material';
 
 const columns: GridColDef[] = [
-  { field: '  ', headerName: 'ID', width: 70 },
+  { field: 'id', headerName: 'ID', width: 70 },
   { field: 'name', headerName: 'Name', width: 200 },
   { field: 'hello', headerName: 'Hello', type: 'number', width: 100 },
   { field: 'number', headerName: 'Category', width: 130 },
@@ -20,7 +20,7 @@ function Product() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const getDataProducts = async () => {
       try {
         const products = await getProvider();
         setRows(products);
@@ -31,7 +31,7 @@ function Product() {
       }
     };
 
-    fetchProducts();
+    getDataProducts();
   }, []);
 
   if (loading) {

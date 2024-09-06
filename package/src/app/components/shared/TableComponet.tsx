@@ -8,7 +8,7 @@ interface TableComponentProps {
 }
 
 export default function TableComponet({ columns, rows }: TableComponentProps) {
-  return (<Box sx={{ height: 400, width: '100%' }}>
+  return (<Box sx={{ margin: 'auto', height: 500, width: '80%' }}>
     <DataGrid
       filterModel={{
         items: [],
@@ -24,12 +24,10 @@ export default function TableComponet({ columns, rows }: TableComponentProps) {
       columns={columns}
       initialState={{
         pagination: {
-          paginationModel: {
-            pageSize: 5,
-          },
+          paginationModel: { pageSize: 5, page: 0 },
         },
       }}
-      pageSizeOptions={[5]}
+      pageSizeOptions={[5, 10, 25]}
       checkboxSelection
       disableRowSelectionOnClick
     />
