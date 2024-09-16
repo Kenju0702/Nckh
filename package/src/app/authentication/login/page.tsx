@@ -55,7 +55,7 @@ const Login2 = () => {
                     color="textSecondary"
                     mb={1}
                   >
-                    Your Social Campaigns
+                    Branch Sales Manager
                   </Typography>
                 }
                 subtitle={
